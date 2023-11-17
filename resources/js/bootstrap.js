@@ -52,7 +52,7 @@ axios.interceptors.request.use(
         return Promise.reject(error)
     }
 )
-
+/*
 axios.interceptors.response.use(
     response => {
         console.log('interceptando o resposta', response)
@@ -81,3 +81,4 @@ axios.interceptors.response.use(
         return Promise.reject(errorr)
     }
 )
+*/

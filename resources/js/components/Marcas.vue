@@ -10,7 +10,6 @@
                             <input-container-component titulo="ID" ID="inputID" IDHelp="IDHelp" ajuda="Informe o ID da marca">                            
                                 <input type="number" class="form-control" id="inputID" aria-describedby="IDHelp" placeholder="ID" v-model='busca.id'>
                             </input-container-component>
-
                         </div>
 
                         <div class="col mb-3">
@@ -194,8 +193,6 @@ import InputContainer from './InputContainer.vue'
         },
         methods:{
             atualizar(){
-                console.log(this.$store.state.item.nome)
-                console.log(this.arquivoImagem)
 
                 let formData = new FormData()
                 formData.append('_method', 'patch')

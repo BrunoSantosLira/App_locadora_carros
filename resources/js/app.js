@@ -36,6 +36,11 @@ app.component('input-container-component', InputContainer);
 import Table from './components/Table.vue';
 app.component('table-component', Table);
 
+
+
+import TableClientes from './components/TableClientes.vue';
+app.component('table-clientes-component', TableClientes);
+
 import Card from './components/Card.vue';
 app.component('card-component', Card);
 
@@ -47,6 +52,10 @@ app.component('alert-component', Alert);
 
 import Paginate from './components/Paginate.vue';
 app.component('paginate-component', Paginate);
+
+
+import Cliente from './components/Cliente.vue';
+app.component('cliente-component', Cliente);
 
 //Cria propriedade GlOBAL nos componentes VUEs
 app.config.globalProperties.$filters = {

@@ -33,7 +33,7 @@ class ClienteController extends Controller
         }
 
         //$marcas = $this->marca->with('modelos')->get();
-        return response()->json($clienteRepository->getResultado(), 200);
+        return response()->json($clienteRepository->getResultadoPaginado(3), 200);
     }
 
     /**
@@ -45,12 +45,15 @@ class ClienteController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate($this->cliente->rules());
-     
+    {    
+        $request->validate($this->cliente->rules(), $this->cliente->feedback());
 
         $cliente = $this->cliente->create([
-            'nome' => $request->nome
+            'nome' => $request->nome,
+            'CPF' => $request->CPF,
+            'endereço' => $request->endereço,
+            'email' => $request->email,
+            'telefone' => $request->telefone,
         ]);
 
         return response()->json($cliente, 201);
@@ -95,24 +98,15 @@ class ClienteController extends Controller
                 };
 
             }
-
-            $request->validate($regrasDinamicas);
-
+            $request->validate($regrasDinamicas, $this->cliente->feedback());
         }else{
-            $request->validate($cliente->rules());
+            $request->validate($this->cliente->rules(), $this->cliente->feedback());
         }
 
 
-
         $cliente->fill($request->all());
-        $cliente->save();
-        /*
-        $marca->update([
-            'nome' => $request->nome,
-            'imagem' => $imagem_urn
-        ]);
 
-        */
+        $cliente->save();
         return response()->json($cliente, 200);
     }
 
