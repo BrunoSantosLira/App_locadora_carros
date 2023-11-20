@@ -41,6 +41,13 @@ app.component('table-component', Table);
 import TableClientes from './components/TableClientes.vue';
 app.component('table-clientes-component', TableClientes);
 
+import TableModelos from './components/TableModelos.vue';
+app.component('table-modelos-component', TableModelos);
+
+import TableCarros from './components/TableCarros.vue';
+app.component('table-carros-component', TableCarros);
+
+
 import Card from './components/Card.vue';
 app.component('card-component', Card);
 
@@ -56,6 +63,16 @@ app.component('paginate-component', Paginate);
 
 import Cliente from './components/Cliente.vue';
 app.component('cliente-component', Cliente);
+
+import Modelo from './components/Modelo.vue';
+app.component('modelo-component', Modelo);
+
+import Carro from './components/Carro.vue';
+app.component('carro-component', Carro);
+
+import Locações from './components/Locações.vue';
+app.component('locacoes-component', Locações);
+
 
 //Cria propriedade GlOBAL nos componentes VUEs
 app.config.globalProperties.$filters = {

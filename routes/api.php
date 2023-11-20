@@ -31,10 +31,10 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function () {
     Route::post('me',[\App\Http\Controllers\AuthController::class, 'me']);
     Route::post('logout',[\App\Http\Controllers\AuthController::class, 'logout']);
     Route::apiresource('cliente', ClienteController::class);
-    Route::apiresource('carro', CarroController::class);
-    Route::apiresource('locacao', LocacaoController::class);
     Route::apiresource('marca', MarcaController::class);
     Route::apiresource('modelo', ModeloController::class);
+    Route::apiresource('carro', CarroController::class);
+    Route::apiresource('locacao', LocacaoController::class);
 });
 
 

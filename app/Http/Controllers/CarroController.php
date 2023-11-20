@@ -41,7 +41,7 @@ class CarroController extends Controller
         }
 
         //$marcas = $this->marca->with('modelos')->get();
-        return response()->json($carroRepository->getResultado(), 200);
+        return response()->json($carroRepository->getResultadoPaginado(3), 200);
     }
 
     /**
@@ -58,7 +58,7 @@ class CarroController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate($this->carro->rules());
+        $request->validate($this->carro->rules(), $this->carro->feedback());
      
 
         $carro = $this->carro->create([
@@ -117,23 +117,24 @@ class CarroController extends Controller
 
             }
 
-            $request->validate($regrasDinamicas);
+            $request->validate($regrasDinamicas, $carro->feedback());
 
         }else{
-            $request->validate($carro->rules());
+            $request->validate($carro->rules(), $carro->feedback());
         }
 
 
-
         $carro->fill($request->all());
-        $carro->save();
-        /*
-        $marca->update([
-            'nome' => $request->nome,
-            'imagem' => $imagem_urn
-        ]);
 
-        */
+        if($request->file('imagem')){
+            Storage::disk('public')->delete($carro->imagem);
+
+            $imagem = $request->file('imagem');
+            $imagem_urn = $imagem->store('imagens', 'public');
+            $modelo->imagem = $imagem_urn;
+        }
+
+        $carro->save();
         return response()->json($carro, 200);
     }
 

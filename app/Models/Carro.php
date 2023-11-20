@@ -14,9 +14,16 @@ class Carro extends Model
     public function rules(){
         return [
             'modelo_id' => 'exists:modelos,id',
-            'placa' => 'required',
+            'placa' => 'required|unique:carros,placa,'.$this->id,
             'disponivel' => 'required',
             'km' => 'required',
+       ];
+    }
+
+    public function feedback(){
+        return [
+            'required' => 'O campo :attribute é obrigatório',
+            'placa.unique' => 'Essa placa já está cadastrada!',
        ];
     }
     public function modelo(){

@@ -28,3 +28,23 @@ Route::get('/marcas', function(){
 Route::get('/clientes', function(){
     return view('app.clientes');
 })->name('clientes');
+
+Route::get('/modelos', function(){
+    return view('app.modelos');
+})->name('modelos');
+
+
+Route::get('/carros', function(){
+    return view('app.carros');
+})->name('carros');
+
+Route::get('/locacoes', function(){
+    return view('app.locacoes');
+})->name('locacoes');
+
+// usage inside a laravel route
+Route::get('/teste', function() {
+    $img = Image::make('C:\Users\bruno\Desktop\code_laravel\app_locadora_carros\public\storage\imagens\negocios3.png')->resize(300, 200);
+    $img = Image::make('C:\Users\bruno\Desktop\code_laravel\app_locadora_carros\public\storage\imagens\negocios3.png')->encode('webp');
+    $img->save('C:\Users\bruno\Desktop\code_laravel\app_locadora_carros\public\storage\imagens\negocios3.gif');
+});
